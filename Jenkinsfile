@@ -4,7 +4,7 @@ pipeline {
         maven 'maven'
     }
 environment {
-    APP_NAME="jenkins-ci-cd-new"
+    APP_NAME="user-service"
     RELEASE= "1.0.0"
     DOCKER_USER="coolravi"
     IMAGE_NAME="${DOCKER_USER}"+"/"+"${APP_NAME}"
@@ -13,7 +13,7 @@ environment {
     stages{
         stage('Build Maven'){
             steps{
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Reach-Ravi/jenkins-ci-cd-new.git']])
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Reach-Ravi/user-service.git']])
                 bat 'mvn clean install'
             }
         }
