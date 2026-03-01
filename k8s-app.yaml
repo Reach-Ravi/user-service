@@ -8,6 +8,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: spring-boot-k8s-deployment
+  namespace: user-app
 spec:
   selector:
     matchLabels:
@@ -20,10 +21,10 @@ spec:
     spec:
       containers:
         - name: user-app-container
-          image: user-service:1.0.0-5
+          image: coolravi/user-service:1.0.0-17
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 9191
+            - containerPort: 8081
 
 
 ---
@@ -36,6 +37,6 @@ spec:
     app: spring-boot-k8s
   ports:
     - protocol: TCP
-      port: 9090
-      targetPort: 9191
+      port: 8081
+      targetPort: 8081
   type: NodePort
