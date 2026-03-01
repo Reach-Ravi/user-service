@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: user-app-container
-          image: coolravi/user-service:1.0.0-17
+          image: coolravi/user-service:1.0.0-18
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8081

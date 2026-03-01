@@ -45,7 +45,13 @@ pipeline {
 
         stage('Deploy to Kubernetes') {
             steps {
-                bat 'kubectl apply -f k8s-deployment.yaml'
+                powershell '''
+                    (Get-Content k8s-deployment.yaml) `
+                      -replace "image:.*", "image: $env:IMAGE_NAME:$env:IMAGE_TAG" |
+                      Set-Content k8s-deployment.yaml
+        
+                    kubectl apply -f k8s-deployment.yaml
+                '''
             }
         }
     }
