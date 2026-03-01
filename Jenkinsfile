@@ -45,13 +45,13 @@ environment {
                 }
             }
         }
-            stage('Deploy to k8s'){
-                steps{
-                    script{
-                        bat 'kubectl apply -f k8s-deployment.yaml'
-                    }
+        stage('Deploy to k8s'){
+            steps{
+                script{
+                    bat 'kubectl apply -f k8s-deployment.yaml'
                 }
             }
+        }
         /*stage('Deploy to k8s'){
             steps{
                 script{
